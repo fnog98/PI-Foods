@@ -1,0 +1,17 @@
+.main{
+    background-image: url('../../image/main.jpg');
+
+}
+
+.cards{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 10px;
+    justify-items: stretch;
+}
+
+.buttonCrear{
+    
+}
