@@ -1,10 +1,10 @@
-    import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { getRecipeByID, Loading } from '../../actions';
 import {useParams} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loader';
-
+import './detail.css';
 
 function Detail(){
     const dispatch = useDispatch();
@@ -26,8 +26,8 @@ function Detail(){
                 <div className='botonDevolver'>
                     <Link to={`/home`}><button>Volver</button></Link>
                 </div>
-                <h2 className='titlerecipe'>{recetas[0].name}</h2>
-                <div className='imgResumen'>
+                <h2 className='titleRecipe'>{recetas[0].name}</h2>
+                <div className='imgyResumen'>
                     <div className='imgrecipe'>
                         <img src={recetas[0].image} alt='img not found' width='350px' height='250px'/>
                     </div>
@@ -46,7 +46,7 @@ function Detail(){
                     <ol>
                         {Array.isArray(recetas[0].steps) ? recetas[0].steps.map((e, i) => {
                             return (
-                                <li key={i} >{e}</li>
+                                <li key={i}>{e}</li>
                             )
                         }) : <p>No se informaron pasos a seguir para esta receta</p>}
                     </ol>

@@ -1,16 +1,17 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import '../Card/card.css';
 
 export default function Card ({image, name, diets, id, healthscore}){
     return(
-        <div>
+        <div className="card">
             <Link to={`/home/${id}`}>
-                <img src={image} alt='img not found'/>
+                <img src={image} alt='img not found' width="350px" height="250px" className="imagecard"/>
             </Link>
             <div>
-                <h3>{name}</h3>
-                <h5>TIPO DE DIETA: {diets.join(', ')}</h5>
-                <h5>HEALTH SCORE: {healthscore}</h5>
+                <h3 className="cardtitle">{name}</h3>
+                <h5 className="carddescr">TIPO DE DIETA: {diets.join(', ')}</h5>
+                <h5 className="carddescr">HEALTH SCORE: {healthscore}</h5>
             </div>
         </div>
     )

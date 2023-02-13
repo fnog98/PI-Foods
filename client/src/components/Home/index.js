@@ -67,14 +67,14 @@ export default function Home(){
             <div className="main">
                 <div className="buttonCrear">
                     <Link to='/createrecipe'><button>Crear Receta</button></Link>
-                    <button onClick={e=>{handleClick(e)}}>
+                    <button onClick={(e)=>{handleClick(e)}}>
                         Restablecer
                     </button>
                 </div>
                 <div>
                     <SearchBar paginado={paginado}/>
                 </div>
-                <div>
+                <div className="filterSelects"> 
                     <select onChange={e=>handleSortName(e)}>
                         <option value='asc'>A-Z</option>
                         <option value='desc'>Z-A</option>
@@ -97,7 +97,7 @@ export default function Home(){
                     paginado={paginado}
                 />
                 <div className="cards">
-                    {currentRecipes?.map(e=>{
+                    {currentRecipes?.map((e)=>{
                         return(
                             <Card 
                             id={e.id} 

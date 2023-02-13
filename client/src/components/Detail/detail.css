@@ -1,0 +1,73 @@
+.detailsContainer {
+    flex-direction: flex;
+    background-image: url("../../image/fondoVerdure.jpeg");
+    background-size:cover;
+    background-attachment: fixed;
+    height:auto;
+    min-height: 100vh;
+}
+
+.titleRecipe {
+    margin: 0;
+    align-items: center;
+    text-shadow: 4px 4px 4px rgb(54, 54, 54);
+    color: antiquewhite;
+}
+
+.imgyResumen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px 55px;
+    margin: 10px;
+    width: auto;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.imgyResumen img{
+    border-radius: 10px;
+}
+
+.recipeCarac {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 60px;
+    margin: 10px;
+    text-transform: capitalize;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stepsInfo {
+    align-items: center;
+    justify-items: flex-end;
+    list-style-position: inside;
+    text-align: justify;
+    font-display: inherit;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.titleSteps {
+    text-align: center;
+}
+
+.botonDevolver{
+    padding: 5px;
+}

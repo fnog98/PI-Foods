@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {getDiets, postRecipes} from '../../actions';
 import { useDispatch, useSelector } from "react-redux";
+import './recipeCreate.css';
 
 function validate(input){
     let errors={};
@@ -30,7 +31,8 @@ function RecipeCreate(){
         healthscore: '',
         dishtypes: '',
         steps: [],
-        diets: []
+        diets: [],
+        id: []
     })
 
     useEffect(()=>{
@@ -124,12 +126,12 @@ function RecipeCreate(){
 
     return(
         <div className='mainContainer'>
-            <div className='backButton'>
+            <div className='botonDevolver'>
                 <Link to='/home'><button>Volver</button></Link>
             </div>
 
             <form onSubmit={e => handleSubmit(e)}>
-                <section className='inputsycheck'>
+                <section className='inputsyCheck'>
                     <div className='inputsText'>
                         <div>
                             <label>Nombre: </label>
@@ -171,7 +173,7 @@ function RecipeCreate(){
                         </fieldset>
                     </div>
                 </section>
-                <section className="stepyrender">
+                <section className="stepyRender">
                     <div className="stepByStep">
                             <legend>Pasos: </legend>
                             <textarea value={dataSteps} name="name" onChange={e=>setDataSteps(e.target.value)} row="8" col="80"></textarea> 

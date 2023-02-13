@@ -55,7 +55,7 @@ function rootReducer(state = initialState, action){
                 if(a.healthscore > b.healthscore){
                     return 1; 
                 }
-                if(b.healthscore > a.healthscore){
+                if(b.healtscore > a.healthscore){
                     return -1;
                 }
                 return 0;
@@ -92,7 +92,7 @@ function rootReducer(state = initialState, action){
                 ...state
             }
         case 'LOADER' :
-            const loader = state.loader
+            const loader = state.loader;
             if(loader === true) {
                 return {
                     ...state, 

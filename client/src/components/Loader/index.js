@@ -1,4 +1,5 @@
 import React from 'react';
+import './loader.css';
 
 const curiosidad = [
     'Fideos china',
@@ -7,13 +8,13 @@ const curiosidad = [
     'pizza marge',
 ];
 
-export default  function Loadre(){
+export default  function Loader(){
     return (
-        <div>
-            <div>
-                <h1>Caricando</h1>
-                <span></span>
-                <div>
+        <div className="loaderContainer">
+            <div className="contentLoader">
+                <h1>Cargando</h1>
+                <span className="loader"></span>
+                <div className="sabias">
                     <h2>Sapevi che?...</h2>
                     <h3>{curiosidad[Math.floor((Math.random() * curiosidad.length))]}</h3>
                 </div>

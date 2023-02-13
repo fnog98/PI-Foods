@@ -1,0 +1,75 @@
+.loaderContainer {
+    background-image: url("../../image/loader.jpeg");
+    background-size: cover;
+}
+
+.contentLoader {
+
+    display: flex;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.1px);
+    -webkit-backdrop-filter: blur(5.1px);
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    align-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 99.7vh;
+}
+
+.cargando {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-large;
+    text-shadow: 4px 4px 4px rgb(27, 27, 27);
+    color:#cdb4db;
+    /* background: rgba(250, 237, 205, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid rgba(250, 237, 205, 0.32);
+    height: auto; */
+}
+
+.sabias {
+    color: #fefae0;
+    text-shadow: 7px 7px 7px rgb(2, 2, 2);
+    background: rgba(250, 237, 205, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(19px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid rgba(250, 237, 205, 0.32);
+    height: auto;
+}
+
+.loader {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+    margin: 15px auto;
+    position: relative;
+    color: #FFF;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+    0% {
+        box-shadow: -38px -12px, -14px 0, 14px 0, 38px 0;
+    }
+
+    33% {
+        box-shadow: -38px 0px, -14px -12px, 14px 0, 38px 0;
+    }
+
+    66% {
+        box-shadow: -38px 0px, -14px 0, 14px -12px, 38px 0;
+    }
+
+    100% {
+        box-shadow: -38px 0, -14px 0, 14px 0, 38px -12px;
+    }
+}

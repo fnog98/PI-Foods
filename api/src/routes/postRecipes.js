@@ -11,10 +11,9 @@ router.post("/", async(req, res) => {
             summary, 
             healthscore, 
             steps,
-            image: image?image:"https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_640.png",
+            image: image?image:'https://media.istockphoto.com/id/471854619/it/foto/sfondo-per-ricette.jpg?s=612x612&w=0&k=20&c=5gZC7UDgQ8SQGNwyhit-HKLDGRPciTbHIuRp_5ylUmY=',
             dishtypes,
         });
-
         const typediet = await TypeDiet.findAll({
             where: {name: diets}
         });
