@@ -34,7 +34,6 @@
     cursor: pointer;
     outline: none;
 }
-
 .buttonCrear button:hover {
     background-color: #2384c4;
     color: #fff;
@@ -63,7 +62,6 @@
 }
 
 select {
-
     /* styling */
     background-color: white;
     border: thin solid blue;

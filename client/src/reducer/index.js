@@ -50,12 +50,12 @@ function rootReducer(state = initialState, action){
                 recipes: arrOrdenado
             }
         case 'SORT_BY_HS':
-            let sortedHS = action.payload === 'hasc' ?
+            let sortedHS = action.payload === "hasc" ?
             state.recipes.sort(function(a, b){
                 if(a.healthscore > b.healthscore){
                     return 1; 
                 }
-                if(b.healtscore > a.healthscore){
+                if(b.healthscore > a.healthscore){
                     return -1;
                 }
                 return 0;

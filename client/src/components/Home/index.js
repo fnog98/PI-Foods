@@ -13,7 +13,7 @@ export default function Home(){
     const dispatch = useDispatch();
     const allRecipes = useSelector(state => state.recipes);
     const diets = useSelector(state => state.diets);
-    const loader = useSelector(state => state.loader);
+    // const loader = useSelector(state => state.loader);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [orden, setOrden] = useState('');
@@ -28,10 +28,8 @@ export default function Home(){
     };
 
     useEffect(()=>{
-        dispatch(Loading());
         dispatch(getRecipes());
         dispatch(getDiets());
-        dispatch(Loading());
     }, [dispatch]);
 
     function handleClick(e){
@@ -44,8 +42,10 @@ export default function Home(){
 
     async function handleFilterDiets(e){
         e.preventDefault();
+        dispatch(Loading());
         await dispatch(getRecipes());
         dispatch(filterByDiets(e.target.value))
+        dispatch(Loading());
         setCurrentPage(1);
     };
 
@@ -61,66 +61,141 @@ export default function Home(){
         setOrden(`Ordenado ${e.target.value}`)
     };
 
+    const [loading, setLoading] = useState(false)
+    useEffect(()=>{
+        dispatch(Loading());
+        setLoading(true);
+        setTimeout(()=>{
+            setLoading(false);
+        }, 2000);
+        dispatch(Loading());
+    }, [dispatch])
 
-    if(loader === true){
-        return(
-            <div className="main">
-                <div className="buttonCrear">
-                    <Link to='/createrecipe'><button>Crear Receta</button></Link>
-                    <button onClick={(e)=>{handleClick(e)}}>
-                        Restablecer
-                    </button>
-                </div>
-                <div>
-                    <SearchBar paginado={paginado}/>
-                </div>
-                <div className="filterSelects"> 
-                    <select onChange={e=>handleSortName(e)}>
-                        <option value='asc'>A-Z</option>
-                        <option value='desc'>Z-A</option>
-                    </select>
-                    <select onChange={e=>handleFilterDiets(e)}>
-                        {diets?.map(e=>{
-                            return(<option value={e.name} key={e.id}>{e.name}</option>)})
-                        }
-                    </select>
-                    <select onChange={e=> handleSortHS(e)}>
-                        <option value='hasc'>HealtScore Bajo-Alto</option>
-                        <option value='hdesc'>HealtScore Alto-Bajo</option>
-                    </select>
-                </div>
-                <Paginado 
-                    setCurrentPage={setCurrentPage}
-                    currentPage={currentPage}
-                    recipesPerPage={recipesPerPage}
-                    allRecipes={allRecipes.length}
-                    paginado={paginado}
-                />
-                <div className="cards">
-                    {currentRecipes?.map((e)=>{
-                        return(
-                            <Card 
-                            id={e.id} 
-                            name={e.name} 
-                            image={e.image} 
-                            diets={e.diets} 
-                            key={e.id}
-                            healthscore={e.healthscore}
-                            />
-                        )
-                    })}
-                </div>
-                <Paginado 
-                    currentPage={currentPage}
-                    recipesPerPage={recipesPerPage}
-                    allRecipes={allRecipes.length}
-                    paginado={paginado}
-                />
-            </div>
+    return(
+        loading ? (<Loader/>) :
+        (
+                            <div className="main">
+                                <div className="buttonCrear">
+                                    <Link to='/createrecipe'><button>Crear Receta</button></Link>
+                                    <button className='buttonrecet' onClick={(e)=>{handleClick(e)}}>
+                                        Restablecer
+                                    </button>
+                                </div>
+                                <div>
+                                    <SearchBar paginado={paginado}/>
+                                </div>
+                                <div className="filterSelects"> 
+                                    <select onChange={e=>handleSortName(e)}>
+                                        <option selected disabled>Orden Alfabetico</option>
+                                        <option value='asc'>A-Z</option>
+                                        <option value='desc'>Z-A</option>
+                                    </select>
+                                        <select onChange={e=>handleFilterDiets(e)}>
+                                        <option selected disabled>Dietas</option>
+                                        {diets?.map(e=>{
+                                            return(<option value={e.name} key={e.id}>{e.name}</option>)})
+                                        }
+                                        </select>
+                                    <select onChange={e=> handleSortHS(e)}>
+                                        <option selected disabled>HealtScore</option>
+                                        <option value='hasc'>Bajo-Alto</option>
+                                        <option value='hdesc'>Alto-Bajo</option>
+                                    </select>
+                                </div>
+                                <Paginado 
+                                    setCurrentPage={setCurrentPage}
+                                    currentPage={currentPage}
+                                    recipesPerPage={recipesPerPage}
+                                    allRecipes={allRecipes.length}
+                                    paginado={paginado}
+                                />
+                                <div className="cards">
+                                    {currentRecipes?.map((e)=>{
+                                        return(
+                                            <Card 
+                                            id={e.id} 
+                                            name={e.name} 
+                                            image={e.image} 
+                                            diets={e.diets} 
+                                            key={e.id}
+                                            healthscore={e.healthscore}
+                                            />
+                                        )
+                                    })}
+                                </div>
+                                <Paginado 
+                                    currentPage={currentPage}
+                                    recipesPerPage={recipesPerPage}
+                                    allRecipes={allRecipes.length}
+                                    paginado={paginado}
+                                />
+                            </div>
         )
-    } else {
-        return (
-            <Loader/>
-        )
-    };
-};
+    );
+
+
+//     if(getRecipes && getDiets){
+//         return(
+//             <div className="main">
+//                 <div className="buttonCrear">
+//                     <Link to='/createrecipe'><button>Crear Receta</button></Link>
+//                     <button className='buttonrecet' onClick={(e)=>{handleClick(e)}}>
+//                         Restablecer
+//                     </button>
+//                 </div>
+//                 <div>
+//                     <SearchBar paginado={paginado}/>
+//                 </div>
+//                 <div className="filterSelects"> 
+//                     <select onChange={e=>handleSortName(e)}>
+//                         <option selected disabled>Orden Alfabetico</option>
+//                         <option value='asc'>A-Z</option>
+//                         <option value='desc'>Z-A</option>
+//                     </select>
+//                         <select onChange={e=>handleFilterDiets(e)}>
+//                         <option selected disabled>Dietas</option>
+//                         {diets?.map(e=>{
+//                             return(<option value={e.name} key={e.id}>{e.name}</option>)})
+//                         }
+//                         </select>
+//                     <select onChange={e=> handleSortHS(e)}>
+//                         <option selected disabled>HealtScore</option>
+//                         <option value='hasc'>Bajo-Alto</option>
+//                         <option value='hdesc'>Alto-Bajo</option>
+//                     </select>
+//                 </div>
+//                 <Paginado 
+//                     setCurrentPage={setCurrentPage}
+//                     currentPage={currentPage}
+//                     recipesPerPage={recipesPerPage}
+//                     allRecipes={allRecipes.length}
+//                     paginado={paginado}
+//                 />
+//                 <div className="cards">
+//                     {currentRecipes?.map((e)=>{
+//                         return(
+//                             <Card 
+//                             id={e.id} 
+//                             name={e.name} 
+//                             image={e.image} 
+//                             diets={e.diets} 
+//                             key={e.id}
+//                             healthscore={e.healthscore}
+//                             />
+//                         )
+//                     })}
+//                 </div>
+//                 <Paginado 
+//                     currentPage={currentPage}
+//                     recipesPerPage={recipesPerPage}
+//                     allRecipes={allRecipes.length}
+//                     paginado={paginado}
+//                 />
+//             </div>
+//         )
+//     } else {
+//         return (
+//             <Loader/>
+//         )
+//     };
+}
